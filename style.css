@@ -1,0 +1,129 @@
+/*  estilo da pagina */
+body {
+    background-color: #f8fafd;
+    font-family: Arial, sans-serif;
+    color: #252525;
+    padding: 2rem;
+
+}
+main {
+    max-width: 780px;
+    margin: 0 auto;
+
+}
+
+/* sessão home */
+.home {
+    text-align: center;
+    padding-bottom: 3rem;
+
+}
+
+.home .title {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1.5rem;
+}
+
+.home .subtitle {
+    font-size: 1,125rem;
+    color: #828282;
+}
+
+.box {
+    background: #fff;
+    box-shadow:  0 1px 2px rgba(132, 148, 165, 0.1);
+    border-radius: 8px;
+    margin-bottom: 3rem;
+
+}
+
+ /* area da senha */
+ .password {
+    display: flex;
+    align-items:  center;
+    padding: 1rem 1.5rem;
+ }
+
+.password .text {
+    flex: 1;
+}
+
+.password .text .input {
+    font-family: Arial, sans-serif;
+    font-size: 3rem;
+    cursor: default;
+    border: none;
+    outline: none;
+    height: 52px;
+    width: 100%;
+    transition: all 0.25s;
+    user-select: none; /* impede seleção do texto */
+
+}
+
+/* classes dinamicas aplicadas pelo js */
+.password .text .input.font-small {
+    font-size: 2rem;
+    color: red;
+}
+.password .text .input.font-mid {
+    font-size: 1.5rem;
+    color: rgb(255, 188, 17);
+}
+.password .text .input.font-big {
+    font-size: 1rem;
+    color: rgb(5, 139, 0);
+}
+
+/* botoes de ação */
+.password .actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 1s;
+}
+
+/* indicador de segurança da senha */
+.indicator {
+    height: 10px;
+    background-color: #ddd;
+    border-bottom-left-radius:8px;
+    border-bottom-right-radius:8px;
+
+}
+
+.indicator .bar {
+    height: 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: all 0.2s;
+}
+
+/* quando chegar a 100% */
+.indicator .bar.complete {
+    border-top-right-radius: 0 ;
+}
+
+/* visual da barra controlado pelo js */
+.indicator .bar.critical {
+    background-color: red;
+}
+.indicator .bar.warming {
+    background-color: yellow;
+}
+.indicator .bar.safe {
+    background-color: green;
+}
+
+/* area de customização */
+.customize {
+    padding: 1rem 1.5rem;
+}
+
+.customize .title {
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.75rem;
+}
