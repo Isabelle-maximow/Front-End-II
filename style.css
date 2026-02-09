@@ -1,129 +1,255 @@
-/*  estilo da pagina */
 body {
-    background-color: #f8fafd;
-    font-family: Arial, sans-serif;
-    color: #252525;
-    padding: 2rem;
-
+  background-color: #f8fafd;
+  font-family: "Inter", sans-serif;
+  color: #252525;
+  padding: 2rem;
+  /* irem = 16px, 2rem = 32px... */
 }
+
 main {
-    max-width: 780px;
-    margin: 0 auto;
-
+  max-width: 780px;
+  /* Largura máxima */
+  margin: 0 auto;
 }
 
-/* sessão home */
 .home {
-    text-align: center;
-    padding-bottom: 3rem;
-
+  text-align: center;
+  padding-bottom: 3rem;
 }
 
 .home .title {
-    font-size: 2rem;
-    font-weight: bold;
-    padding-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-bottom: 1.5rem;
 }
 
 .home .subtitle {
-    font-size: 1,125rem;
-    color: #828282;
+  font-size: 1.125rem;
+  color: #828282;
 }
+
+/* Box Container  */
 
 .box {
-    background: #fff;
-    box-shadow:  0 1px 2px rgba(132, 148, 165, 0.1);
-    border-radius: 8px;
-    margin-bottom: 3rem;
-
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(132, 148, 165, 01.125rem);
+  border-radius: 8px;
+  margin-bottom: 3rem;
 }
 
- /* area da senha */
- .password {
-    display: flex;
-    align-items:  center;
-    padding: 1rem 1.5rem;
- }
+/* Área da senha  */
+
+.password {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
 
 .password .text {
-    flex: 1;
+  flex: 1;
 }
 
-.password .text .input {
-    font-family: Arial, sans-serif;
-    font-size: 3rem;
-    cursor: default;
-    border: none;
-    outline: none;
-    height: 52px;
-    width: 100%;
-    transition: all 0.25s;
-    user-select: none; /* impede seleção do texto */
-
+.password .text input {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 3rem;
+  cursor: default;
+  border: none;
+  outline: none;
+  /* Remover foco azul */
+  height: 52px;
+  width: 100%;
+  transition: all 0.2s;
+  user-select: none;
+  /* Impede a seleção ao texto */
 }
 
-/* classes dinamicas aplicadas pelo js */
-.password .text .input.font-small {
-    font-size: 2rem;
-    color: red;
+/* Classes dinamicas pelo JS */
+
+/* Qnd a senha for pequena alterar o tamanho da fonte */
+
+.password .text input.font-sm {
+  font-size: 2rem;
+  color: darkred;
 }
-.password .text .input.font-mid {
-    font-size: 1.5rem;
-    color: rgb(255, 188, 17);
-}
-.password .text .input.font-big {
-    font-size: 1rem;
-    color: rgb(5, 139, 0);
+.password .text input.font-mid {
+  font-size: 2rem;
+  color: yellow;
 }
 
-/* botoes de ação */
-.password .actions button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 1s;
+.password .text input.font-big {
+  font-size: 2rem;
+  color: green;
 }
 
-/* indicador de segurança da senha */
+/* Botoes de ação */
+
+.password .action button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 1s;
+}
+
+/* Indicador de segurança da senha */
 .indicator {
-    height: 10px;
-    background-color: #ddd;
-    border-bottom-left-radius:8px;
-    border-bottom-right-radius:8px;
-
+  background-color: #fff;
+  height: 10px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .indicator .bar {
-    height: 10px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    transition: all 0.2s;
+  height: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: all 0.2s;
 }
 
-/* quando chegar a 100% */
-.indicator .bar.complete {
-    border-top-right-radius: 0 ;
+/* Quando chegar a 100% */
+
+.indicator .bar.completed {
+  border-top-right-radius: 0;
 }
 
-/* visual da barra controlado pelo js */
+/* Visual da barra comtrolado pelo JS */
+
 .indicator .bar.critical {
-    background-color: red;
+  background-color: darkred;
 }
-.indicator .bar.warming {
-    background-color: yellow;
+.indicator .bar.warning {
+  background-color: yellow;
 }
 .indicator .bar.safe {
-    background-color: green;
+  background-color: green;
 }
 
-/* area de customização */
+/* Área de costumização */
+
 .customize {
-    padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .customize .title {
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+}
+
+.customize .actions {
+  display: flex;
+  gap: 3rem;
+  color: #828282;
+}
+
+/* slider */
+
+.customize .passwordLength {
+  flex: 1;
+}
+.customize .passwordLength .slider {
+  appearance: none;
+  /* Remove o estilo padrão */
+  background-color: #dddd;
+  height: 10px;
+  outline: none;
+  border-radius: 8px;
+  width: 100%;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  margin-top: 1rem;
+}
+
+.customize .passwordLength .slider:hover {
+  opacity: 1;
+}
+.customize .passwordLength .slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #9b51e0;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* Checkbox atualizado */
+
+.checkboxContainer {
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
+  /* Impossivel selecionar o texto */
+}
+
+.checkboxContainer input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkboxContainer .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #dddd;
+  transition: all 0.2s;
+}
+
+.checkboxContainer:hover input ~ .checkmark {
+  /* O tio seleciona o elemento que vem depois */
+  background-color: #cccc;
+}
+.checkboxContainer input:checked ~ .checkmark {
+  /* O tio seleciona o elemento que vem depois */
+  background-color: #9b51e0;
+}
+
+/* Simbolo checked; */
+
+.checkboxContainer .checkmark:after {
+  content: "";
+  display: none;
+  position: absolute;
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Botão copiar final */
+
+.submit {
+  text-align: center;
+}
+
+.submit button {
+  background-color: #bb6bd9;
+  font-size: 1.375rem;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  transition: all 0.2s;
+}
+
+.submit button:hover {
+  background-color: #9b51e0;
 }
