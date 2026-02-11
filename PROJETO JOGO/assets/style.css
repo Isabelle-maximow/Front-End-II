@@ -1,0 +1,61 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    cursor: default;
+}
+
+#titulo {
+    text-align: center;
+    color: #2d3436;
+    font-weight: bold;
+}
+
+
+
+
+/*  COLOCAR AS OPÇÕES DE LADO */
+#jogador #jogadorEscolha li,
+#computador #computadorEscolha li {
+    display: inline;
+    margin: 0 15px;
+}
+
+/* tamanho da imagem */
+#jogador #jogadorEscolha img,
+#computador #computadorEscolha img {
+    max-width: 80px;
+}
+
+/*  diminuir a opacidade por padrão */
+#jogador #jogadorEscolha a,
+#computador #computadorEscolha a {
+    opacity: 0.2;
+}
+
+/*  aumentar opacidade ao passar o mouse */
+#jogador #jogadorEscolha a :hover,
+#computador #computadorEscolha a {
+    opacity: 1;
+}
+
+/*  pontuação */
+#jogadorPontos,
+#computadorPontos {
+    font-size: 52px;
+    position: absolute;
+    top: 8px;
+}
+
+/*  posição do placar jogador */
+#jogadorPontos {
+    right: 20px;
+}
+/* nomes */
+#jogadorNome,
+#computadorNome {
+    font-size: 24px;
+}
+
+#computadorNome {
+    text-align: right;
+}
