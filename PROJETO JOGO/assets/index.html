@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpô</title>
+</head>
+<body>
+    <div id="principal">
+        <h1 id="titulo"> Pedra, Papel e Tesoura</h1>
+    </div>
+
+    <!-- PLACAR -->
+     <div id="placar">
+        <div id="Jogador">
+            <h2 id="JogadorNome">Player</h2>
+            <span id="JogadorPontos">0</span>
+            
+            <!-- LISTA DE ESCOLHAS -->
+             <ul id="JogadorEscolha">
+                <li>
+                    <a id="JogadorEscolha1">
+                        <img src="hello.png" alt="" /> <!--  papel -->
+                    </a>
+                </li>
+                 <li>
+                    <a id="JogadorEscolha2">
+                         <img src="closed-fist.png" alt="" /> <!-- pedra -->
+                    </a>
+                </li>
+                <!-- id usado pelo js para captura do clique -->
+                <li>
+                    <a id="JogadorEscolha3">
+                        <img src="scissor.png" alt="" /> <!-- Tesoura -->
+                    </a>
+                </li>
+             </ul>
+        </div>
+        <div id="versus">VS</div>
+         <div id="computador">
+            <h2 id="computadorNome">Player</h2>
+            <span id="computadorPontos">0</span>
+            
+            <!-- LISTA DE ESCOLHAS -->
+             <ul id="computadorEscolha">
+                <li>
+                    <a id="computadorEscolha1">
+                        <img src="hello.png" alt="" /> <!--  papel -->
+                    </a>
+                </li>
+                 <li>
+                    <a id="computadorEscolha2">
+                         <img src="closed-fist.png" alt="" /> <!-- pedra -->
+                    </a>
+                </li>
+                <!-- id usado pelo js para captura do clique -->
+                <li>
+                    <a id="computadorEscolha3">
+                        <img src="scissor.png" alt="" /> <!-- Tesoura -->
+                    </a>
+                </li>
+             </ul>
+        </div>
+
+        <!-- mensagem atualiza dinamicamente no JS  -->
+        <div id="mensagem">Mensagens</div>
+     </div>
+
+
+</body>
+</html>
