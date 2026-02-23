@@ -1,61 +1,99 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400;
-    cursor: default;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  cursor: default;
 }
 
 #titulo {
-    text-align: center;
-    color: #2d3436;
-    font-weight: bold;
+  text-align: center;
+  color: #2d3436;
+  font-weight: bold;
 }
-
-
-
-
-/*  COLOCAR AS OPÇÕES DE LADO */
+#placar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#jogador {
+  background-color: red;
+}
+#computador {
+  background-color: blue;
+}
+#jogador,
+#computador{
+  flex-grow: 1;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+}
+#jogador h2,
+#computador h2{
+  margin: 0;
+  padding: 0;
+}
+/* Lista de escolhas */
+#jogador #jogadorEscolha,
+#computador #computadorEscolha {
+  list-style: none;
+  text-align: center;
+  margin-top: 30px;
+  padding: 0;
+}
+/* Colocar as opções lado a lado */
 #jogador #jogadorEscolha li,
 #computador #computadorEscolha li {
-    display: inline;
-    margin: 0 15px;
+  display: inline;
+  padding: 0 15px;
 }
-
-/* tamanho da imagem */
+/* Tamanho da imagem */
 #jogador #jogadorEscolha img,
 #computador #computadorEscolha img {
-    max-width: 80px;
+  max-width: 80px;
 }
-
-/*  diminuir a opacidade por padrão */
+/* Diminuir a opacidade por padrão */
 #jogador #jogadorEscolha a,
 #computador #computadorEscolha a {
-    opacity: 0.2;
+  opacity: 0.2;
 }
-
-/*  aumentar opacidade ao passar o mouse */
-#jogador #jogadorEscolha a :hover,
-#computador #computadorEscolha a {
-    opacity: 1;
+#jogador #jogadorEscolha a:hover,
+#jogador #jogadorEscolha a.selecionado,
+#computador #computadorEscolha a.selecionado {
+  opacity: 1;
 }
-
-/*  pontuação */
+/* Pontuação */
 #jogadorPontos,
 #computadorPontos {
-    font-size: 52px;
-    position: absolute;
-    top: 8px;
+  font-size: 52px;
+  position: absolute;
+  top: 8px;
 }
-
-/*  posição do placar jogador */
+/* Posição do placar jogador */
 #jogadorPontos {
-    right: 20px;
+  right: 20px;
 }
-/* nomes */
+/* Nomes */
 #jogadorNome,
 #computadorNome {
     font-size: 24px;
 }
-
-#computadorNome {
+#computadorNome{
     text-align: right;
+}
+
+/* versus */
+#versus {
+    font-size: 80px;
+    padding: 40px;
+}
+/* Mensagem do Jogo */
+#mensagem {
+    background-color: #636e63;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 20px;
 }
