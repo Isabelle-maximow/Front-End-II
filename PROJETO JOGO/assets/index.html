@@ -1,72 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jokenpô</title>
     <link rel="stylesheet" href="style.css">
+    <title>Jokenpô</title>
 </head>
+
 <body>
     <div id="principal">
-        <h1 id="titulo"> Pedra, Papel e Tesoura</h1>
+        <h1 id="titulo">Pedra, Papel, Tesoura</h1>
+
+        <!-- PLACAR -->
+        <div id="placar">
+            <div id="jogador">
+                <!-- Nome do jogador alterado pelo JS -->
+                <h2 id="jogadorNome">Player</h2>
+                <span id="jogadorPontos">0</span>
+                <!-- Lista de escolhas -->
+                <ul id="jogadorEscolha">
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="jogadorEscolha1">
+                            <img src="./assets/pedra.png" alt="Pedra">
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="jogadorEscolha2">
+                            <img src="./assets/papel.png" alt="Papel">
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="jogadorEscolha3">
+                            <img src="./assets/tesoura.png" alt="Tesoura">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Texto Central de "vs" -->
+            <div id="versus">vs</div>
+
+            <div id="computador">
+                <!-- Nome do jogador alterado pelo JS -->
+                <h2 id="computadorNome">Computador</h2>
+                <span id="computadorPontos">0</span>
+                <!-- Lista de escolhas -->
+                <ul id="computadorEscolha">
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="computadorEscolha1">
+                            <img src="./assets/pedra.png" alt="Pedra">
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="computadorEscolha2">
+                            <img src="./assets/papel.png" alt="Papel">
+                        </a>
+                    </li>
+                    <li>
+                        <!-- ID usado pelo JS para captura de clique -->
+                        <a id="computadorEscolha3">
+                            <img src="./assets/tesoura.png" alt="Tesoura">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- mensagem atualiza dinamicamente -->
+        <div id="mensagem">Mensagem</div>
     </div>
-
-    <!-- PLACAR -->
-     <div id="placar">
-        <div id="Jogador">
-            <h2 id="JogadorNome">Player</h2>
-            <span id="JogadorPontos">0</span>
-            
-            <!-- LISTA DE ESCOLHAS -->
-             <ul id="JogadorEscolha">
-                <li>
-                    <a id="JogadorEscolha1">
-                        <img src="hello.png" alt="" /> <!--  papel -->
-                    </a>
-                </li>
-                 <li>
-                    <a id="JogadorEscolha2">
-                         <img src="closed-fist.png" alt="" /> <!-- pedra -->
-                    </a>
-                </li>
-                <!-- id usado pelo js para captura do clique -->
-                <li>
-                    <a id="JogadorEscolha3">
-                        <img src="scissor.png" alt="" /> <!-- Tesoura -->
-                    </a>
-                </li>
-             </ul>
-        </div>
-        <div id="versus">VS</div>
-         <div id="computador">
-            <h2 id="computadorNome">Player</h2>
-            <span id="computadorPontos">0</span>
-            
-            <!-- LISTA DE ESCOLHAS -->
-             <ul id="computadorEscolha">
-                <li>
-                    <a id="computadorEscolha1">
-                        <img src="hello.png" alt="" /> <!--  papel -->
-                    </a>
-                </li>
-                 <li>
-                    <a id="computadorEscolha2">
-                         <img src="closed-fist.png" alt="" /> <!-- pedra -->
-                    </a>
-                </li>
-                <!-- id usado pelo js para captura do clique -->
-                <li>
-                    <a id="computadorEscolha3">
-                        <img src="scissor.png" alt="" /> <!-- Tesoura -->
-                    </a>
-                </li>
-             </ul>
-        </div>
-
-        <!-- mensagem atualiza dinamicamente no JS  -->
-        <div id="mensagem">Mensagens</div>
-     </div>
-
-        <script src="script.js"></script>
+    </div>
 </body>
+<script src="script.js"></script>
+
 </html>

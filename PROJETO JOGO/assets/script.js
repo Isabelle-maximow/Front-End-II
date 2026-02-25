@@ -1,50 +1,48 @@
-// variaveis globais
+// Variaveis Globais:
 
-// capturar nome do jogador
+// Capturar nome jogador
 var jogadorNome;
 
-// pontuação ( inicia em 0)
+// Pontuação (inicia em 0)
 var jogadorPontos = 0;
+// 0 = Nenhuma escolha, 1 = Pedra, 2 = Papel, 3 = Tesoura
+var jogadorEscolha = 0;
 
-// 0 = nenhuma escolha, 1 - pedra, 2 = papel, 3 = tesoura
-var jogadorEscolha = 0
-
-// pontuação (inicia em 0)
+// Pontuação (inicia em 0)
 var computadorPontos = 0;
-
-//0 = nenhuma escolha, 1 - pedra, 2 = papel, 3 = tesoura
+// 0 = Nenhuma escolha, 1 = Pedra, 2 = Papel, 3 = Tesoura
 var computadorEscolha = 0;
 
-// funcoes da interface:
-// exibe mensagem na tela
-function mensagem(texto) {
+// funções de interface:
+// Exibe mensagem na tela
+function mensagem(texto){
     document.getElementById("mensagem").innerHTML = texto;
 }
 
-// definir nome do jogador 
+// Definir nome do Jogador
 function definirNomeJogador(nome) {
     document.getElementById("jogadorNome").innerHTML = nome;
 }
 
-// funçoes auc=xiliares:
-// sortear um número entre min e max
-function sortear(min, max) {
-    return Math.floor(Math.random() * (max - min + 1 )) + min;
+// funções auxiliares:
+//sortear um numero entre min e max
+function sortear(min,max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// calcular quem ganhou a rodada:
-// 0 = empate, 1 = jogador, 3 = computado r
-function calcularEscolha(jogador, computador) {
+// calcular quem ganhou a rodada
+// 0 = empate, 1 = jogador, 2 = computador
+function calcularEscolha(jogador,computador) {
     //empates:
     if (jogador == 1 && computador == 1) {
         return 0;
     } else if (jogador == 2 && computador == 2) {
         return 0;
-    } else if (jogador == 3 && computador == 3) {
-        return 0;
+    } else if (jogador == 2 && computador == 2) {
+                return 0;
     }
 
-    // jogador ganha:
+    // Jogador ganha:
     else if (jogador == 1 && computador == 3) {
         return 1;
     } else if (jogador == 2 && computador == 1) {
@@ -53,106 +51,95 @@ function calcularEscolha(jogador, computador) {
         return 1;
     }
 
-    // computador ganha:
-     else if (jogador == 1 && computador == 2) {
+    // Computador ganha:
+    else if (jogador == 1 && computador == 2) {
         return 2;
     } else if (jogador == 2 && computador == 3) {
         return 2;
     } else if (jogador == 3 && computador == 1) {
         return 2;
     }
-
+    // 0 = empate, 1 = jogador, 2 = computador
 }
 
-// soma jogador
+// soma 1 ponto ao jogador
 function somaPontoJogador() {
-    jogadorPontos++
-    document.getElementById("jogadorPontos").innerHTML = jogadorPontos;}
+    jogadorPontos++;
+    document.getElementById("jogadorPontos").innerHTML = jogadorPontos;
+}
 
-// soma computador
+// soma 1 ponto ao computadolr
 function somaPontoComputador() {
-    jogadorPontos++
-    document.getElementById("computadorPontos").innerHTML = computadorPontos;}
-
-
-// add a classe "selecionado" ao elemento clicado
-function selecionar (tipo, escolha) {
-    document.getElementById(tipo + "Escolha" + escolha).classList.add("selecionado");
+    computadorPontos++;
+    document.getElementById("computadorPontos").innerHTML = computadorPontos;
 }
 
-function deselecionar (tipo, escolha) {
-    document.getElementById(tipo + "Escolha" + escolha).classList.remove("selecionado");
+// Adicionar a classe "selecionado" ao elemento clicado
+function selecionar(tipo, escolha) {
+  document
+    .getElementById(tipo + "Escolha" + escolha)
+    .classList.add("selecionado");
+}
+function desselecionar(tipo, escolha) {
+  document
+    .getElementById(tipo + "Escolha" + escolha)
+    .classList.remove("selecionado");
 }
 
-// FUNÇÃO PRINCIPAL:
-// executada quando o jogador escolher
-function jogar(escolha){
-    // impede multiplos clicks durante a mesma rodada:
+// Função principal 
+
+// Executada quando o jogador escolher as opções
+function jogar(escolha) {
+
     if (jogadorEscolha !== 0) return;
-    // registrar a escolha do jogador:
+    //Registrar a escolha do jogador
     jogadorEscolha = escolha
+    // Destaca a escolha do jogador
+    selecionar("jogador", jogadorEscolha)
+    
+    // Computador sortea aleatoriamente de 1 a 3 
+    computadorEscolha = sortear(1 , 3);
+    // Destaca a escolha do jogador
+    selecionar("computador", computadorEscolha)
 
-    selecionar("jogador", jogadorEscolha);
-
-    // computador sorteia aleatoriamente de 1 a 3
-    computadorEscolha = sortear(1, 3);
-    selecionar("computador", computadorEscolha);
-
-    // calcula quem ganhou a rodada
+    // Calcula quem ganhou a rodada
     var ganhador = calcularEscolha(jogadorEscolha, computadorEscolha);
 
-    // tratar o resultado da rodada
+    // Trata o resultado da rodada
     if (ganhador == 0) {
-        mensagem("EMPATE")
-    }
-    else if (ganhador == 1) {
-        mensagem("EPONTO PARA JOGADOR" + nome)
-        somaPontoJogador()
-    }
-   
-    else if (ganhador == 2) {
-        mensagem("PONTO PARA COMPUTADOR")
-        somaPontoComputador()
+      mensagem("EMPATE!");
+    } else if (ganhador == 1) {
+      mensagem("Ponto para " + jogadorNome);
+      somaPontoJogador()
+    } else if (ganhador == 2) {
+      mensagem("Ponto para o Computador");
+      somaPontoComputador()
     }
 
-    // reset na rodada:
-    setTimeout(function() {
-    // remove o destaque:
-    deselecionar("jogador", jogadorEscolha);
-    deselecionar("computador", computadorEscolha);
-
-    // remove as escolhas 
-    jogadorEscolha = 0;
-    computadorEscolha = 0;
-
-    mensagem(jogadorNome + " escolha uma opção acima...");
-  }, 2000)
-
+    //reset na jogada
+    setTimeout(function(){
+        //remove o destaque
+        desselecionar("jogador", jogadorEscolha);
+        desselecionar("computador", computadorEscolha)
+        //remove as escolhas
+        jogadorEscolha = 0;
+        computadorEscolha = 0;
+    }, 2000);
+}
+//eventos de clique:
+document.getElementById("jogadorEscolha1").onclick = function(){
+    jogar(1)
+}
+document.getElementById("jogadorEscolha2").onclick = function(){
+    jogar(2)
+}
+document.getElementById("jogadorEscolha3").onclick = function(){
+    jogar(3)
 }
 
-
-// eventos de clique:
-//pedra
-document.getElementById("jogadorEscolha1").onclick = function() {
-    jogar(1);
-};
-//papel
-document.getElementById(jogadorEscolha2).onclick = function() {
-    jogar(2);
-};
-//tesoura
-document.getElementById(jogadorEscolha3).onclick = function() {
-    jogar(3);
-};
-
-
-
-
 //inicialização do jogo
-// perguntar o nome:
-jogadorNome = prompt("qual é seu nome:")
-// exibir na tela:
-definirNomeJogador(jogadorNome);
-// mensagem inicial:
-mensagem("bem vindo, " + jogadorNome + "Escolha uma opção acima...")
-
+//perguntar nome do jogador
+jogadorNome = prompt("Qual é o seu nome?")
+definirNomeJogador(jogadorNome)
+// mensagem inicial
+mensagem("Bem vindo, "+ jogadorNome + ". Escolha uma opção acima...")
