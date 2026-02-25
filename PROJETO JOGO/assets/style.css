@@ -97,3 +97,45 @@
     margin: 20px 0;
     padding: 20px;
 }
+
+/* Histórico - tabela */
+#historicoContainer { margin-top: 20px; }
+#historico {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-family: inherit;
+  background: transparent;
+}
+#historico thead th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #f3f4f6;
+  font-weight: 700;
+  border-bottom: 1px solid #e6e9ee;
+  font-size: 14px;
+}
+#historico tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f6f7f9;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #263238;
+}
+#historico tbody tr:nth-child(even) { background: #fafbfc; }
+#historico tbody tr:hover { background: #fffefc; }
+#historico tbody td:first-child { width: 56px; font-weight: 700; color: #0f172a; }
+
+/* Resultados destacados (use data-result no script para aproveitar) */
+#historico tbody td[data-result="Vitória"] { color: #16a34a; font-weight: 600; }
+#historico tbody td[data-result="Derrota"]  { color: #ef4444; font-weight: 600; }
+#historico tbody td[data-result="Empate"]   { color: #6b7280; font-weight: 600; }
+
+/* Responsivo: tabela vira cartões em telas pequenas */
+@media (max-width: 520px) {
+  #historico thead { display: none; }
+  #historico, #historico tbody, #historico tr, #historico td { display: block; width: 100%; }
+  #historico tr { margin-bottom: 12px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(2,6,23,0.04); }
+  #historico td { padding: 8px 10px; border-bottom: 0; }
+  #historico td:first-child { font-weight: 700; }
+}

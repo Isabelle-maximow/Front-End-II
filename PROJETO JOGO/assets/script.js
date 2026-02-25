@@ -38,8 +38,8 @@ function calcularEscolha(jogador,computador) {
         return 0;
     } else if (jogador == 2 && computador == 2) {
         return 0;
-    } else if (jogador == 2 && computador == 2) {
-                return 0;
+    } else if (jogador == 3 && computador == 3) {
+        return 0;
     }
 
     // Jogador ganha:
@@ -86,8 +86,14 @@ function desselecionar(tipo, escolha) {
     .classList.remove("selecionado");
 }
 
-// Função principal 
+// Função auxiliar para converter número em texto
+const escolhaMap = {
+  1: "Pedra",
+  2: "Papel",
+  3: "Tesoura"
+};
 
+// Função principal 
 // Executada quando o jogador escolher as opções
 function jogar(escolha) {
 
@@ -116,6 +122,15 @@ function jogar(escolha) {
       somaPontoComputador()
     }
 
+    // registra no histórico (após atualizar pontuação)
+    logRound({
+      playerChoice: escolhaMap[jogadorEscolha],
+      computerChoice: escolhaMap[computadorEscolha],
+      result: ganhador == 0 ? "Empate" : (ganhador == 1 ? "Vitória" : "Derrota"),
+      playerScore: jogadorPontos,
+      computerScore: computadorPontos
+    });
+
     //reset na jogada
     setTimeout(function(){
         //remove o destaque
@@ -143,3 +158,66 @@ jogadorNome = prompt("Qual é o seu nome?")
 definirNomeJogador(jogadorNome)
 // mensagem inicial
 mensagem("Bem vindo, "+ jogadorNome + ". Escolha uma opção acima...")
+
+let roundCounter = 0;
+const historicoBody = document.querySelector('#historico tbody');
+const limparBtn = document.getElementById('limparHistorico');
+
+function logRound({ playerChoice, computerChoice, result, playerScore, computerScore }) {
+    roundCounter++;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>${roundCounter}</td>
+        <td>${playerChoice}</td>
+        <td>${computerChoice}</td>
+        <td>${result}</td>
+        <td>${playerScore}</td>
+        <td>${computerScore}</td>
+    `;
+    // marca resultado para CSS
+    tr.children[3].setAttribute('data-result', result);
+    // adiciona no topo (mais recente primeiro)
+    historicoBody.prepend(tr);
+    saveHistorico();
+}
+
+function saveHistorico() {
+    const rows = [...historicoBody.querySelectorAll('tr')].map(tr => ({
+        round: tr.children[0].textContent,
+        playerChoice: tr.children[1].textContent,
+        computerChoice: tr.children[2].textContent,
+        result: tr.children[3].textContent,
+        playerScore: tr.children[4].textContent,
+        computerScore: tr.children[5].textContent
+    }));
+    localStorage.setItem('historicoJokenpo', JSON.stringify({ roundCounter, rows }));
+}
+
+function loadHistorico() {
+    const data = JSON.parse(localStorage.getItem('historicoJokenpo') || 'null');
+    if (!data) return;
+    roundCounter = Number(data.roundCounter) || data.rows.length || 0;
+    // os rows estavam salvos do mais recente primeiro; reverte para inserir na ordem desejada
+    data.rows.slice().reverse().forEach(r => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${r.round}</td>
+            <td>${r.playerChoice}</td>
+            <td>${r.computerChoice}</td>
+            <td>${r.result}</td>
+            <td>${r.playerScore}</td>
+            <td>${r.computerScore}</td>
+        `;
+        tr.children[3].setAttribute('data-result', r.result);
+        historicoBody.appendChild(tr);
+    });
+}
+
+limparBtn.addEventListener('click', () => {
+    roundCounter = 0;
+    historicoBody.innerHTML = '';
+    localStorage.removeItem('historicoJokenpo');
+});
+
+// carregar ao abrir a página
+document.addEventListener('DOMContentLoaded', loadHistorico);
