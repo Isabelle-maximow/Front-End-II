@@ -1,0 +1,21 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+canvas {
+    display: block;
+    background: black;
+}
+
+.info {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    color: #fff;
+    font: 14px/1.2 Pixel;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
